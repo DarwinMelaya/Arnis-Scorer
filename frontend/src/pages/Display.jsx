@@ -114,8 +114,15 @@ const Display = () => {
               <div className="text-9xl font-bold font-mono text-red-100">
                 {scores.red}
               </div>
-              <div className="text-xl mt-2 text-red-200">
-                Fouls: {fouls.red} | Disarms: {disarms.red}
+              <div className="text-3xl mt-6 text-red-200 font-bold">
+                Fouls:{" "}
+                <span className="bg-red-700 px-6 py-3 rounded-lg text-white text-4xl">
+                  {fouls.red}
+                </span>{" "}
+                | Disarms:{" "}
+                <span className="bg-red-700 px-6 py-3 rounded-lg text-white text-4xl">
+                  {disarms.red}
+                </span>
               </div>
             </div>
 
@@ -134,8 +141,15 @@ const Display = () => {
               <div className="text-9xl font-bold font-mono text-blue-100">
                 {scores.blue}
               </div>
-              <div className="text-xl mt-2 text-blue-200">
-                Fouls: {fouls.blue} | Disarms: {disarms.blue}
+              <div className="text-3xl mt-6 text-blue-200 font-bold">
+                Fouls:{" "}
+                <span className="bg-blue-700 px-6 py-3 rounded-lg text-white text-4xl">
+                  {fouls.blue}
+                </span>{" "}
+                | Disarms:{" "}
+                <span className="bg-blue-700 px-6 py-3 rounded-lg text-white text-4xl">
+                  {disarms.blue}
+                </span>
               </div>
             </div>
           </div>

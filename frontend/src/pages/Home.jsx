@@ -211,8 +211,15 @@ const Home = () => {
                   Disarm
                 </button>
               </div>
-              <div className="text-xl mt-2 text-red-200">
-                Fouls: {fouls.red} | Disarms: {disarms.red}
+              <div className="text-2xl mt-4 text-red-200 font-bold">
+                Fouls:{" "}
+                <span className="bg-red-700 px-4 py-2 rounded-lg text-white text-3xl">
+                  {fouls.red}
+                </span>{" "}
+                | Disarms:{" "}
+                <span className="bg-red-700 px-4 py-2 rounded-lg text-white text-3xl">
+                  {disarms.red}
+                </span>
               </div>
             </div>
 
@@ -273,8 +280,15 @@ const Home = () => {
                   Disarm
                 </button>
               </div>
-              <div className="text-xl mt-2 text-blue-200">
-                Fouls: {fouls.blue} | Disarms: {disarms.blue}
+              <div className="text-2xl mt-4 text-blue-200 font-bold">
+                Fouls:{" "}
+                <span className="bg-blue-700 px-4 py-2 rounded-lg text-white text-3xl">
+                  {fouls.blue}
+                </span>{" "}
+                | Disarms:{" "}
+                <span className="bg-blue-700 px-4 py-2 rounded-lg text-white text-3xl">
+                  {disarms.blue}
+                </span>
               </div>
             </div>
           </div>
