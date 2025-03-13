@@ -155,17 +155,17 @@ const Home = () => {
           {/* Scoring Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 min-h-0">
             {/* Red Fighter */}
-            <div className="bg-gradient-to-br from-red-900 to-red-800 rounded-2xl shadow-2xl flex flex-col items-center justify-center p-2 md:p-4">
-              <label className="cursor-pointer mb-2 group">
+            <div className="bg-gradient-to-br from-red-900 to-red-800 rounded-2xl shadow-2xl flex flex-col items-center justify-center p-2 md:p-3">
+              <label className="cursor-pointer mb-1 group">
                 {teamLogos.red ? (
                   <img
                     src={teamLogos.red}
                     alt="Red team logo"
-                    className="w-20 h-20 object-contain rounded-full bg-red-700 p-2 mb-2 group-hover:opacity-80"
+                    className="w-12 h-12 md:w-16 md:h-16 object-contain rounded-full bg-red-700 p-2 mb-1 group-hover:opacity-80"
                   />
                 ) : (
-                  <div className="w-20 h-20 rounded-full bg-red-700 flex items-center justify-center mb-2 group-hover:bg-red-600">
-                    <span className="text-red-200">Add Logo</span>
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-red-700 flex items-center justify-center mb-1 group-hover:bg-red-600">
+                    <span className="text-red-200 text-sm">Add Logo</span>
                   </div>
                 )}
                 <input
@@ -181,60 +181,68 @@ const Home = () => {
                 onChange={(e) =>
                   setTeamNames((prev) => ({ ...prev, red: e.target.value }))
                 }
-                className="text-2xl font-bold text-center bg-transparent text-red-200 mb-2 focus:outline-none focus:ring-2 focus:ring-red-500 rounded px-2"
+                className="text-xl md:text-2xl font-bold text-center bg-transparent text-red-200 mb-1 focus:outline-none focus:ring-2 focus:ring-red-500 rounded px-2"
               />
-              <div className="text-7xl font-bold mb-4 font-mono text-red-100">
+              <div className="text-5xl md:text-6xl font-bold mb-2 font-mono text-red-100">
                 {scores.red}
               </div>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-3 gap-2">
                 {[1, 2, 5].map((points) => (
                   <button
                     key={points}
-                    className="bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-lg text-xl font-bold transition-all transform hover:scale-105"
+                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-lg text-lg font-bold transition-all transform hover:scale-105"
                     onClick={() => handleScore("red", points)}
                   >
                     +{points}
                   </button>
                 ))}
               </div>
-              <div className="mt-4">
-                <button
-                  className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-lg font-bold transition-all transform hover:scale-105"
-                  onClick={() => handleFoul("red")}
-                >
-                  Foul
-                </button>
-                <button
-                  className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-lg font-bold transition-all transform hover:scale-105 ml-2"
-                  onClick={() => handleDisarm("red")}
-                >
-                  Disarm
-                </button>
-              </div>
-              <div className="text-2xl mt-4 text-red-200 font-bold">
-                Fouls:{" "}
-                <span className="bg-red-700 px-4 py-2 rounded-lg text-white text-3xl">
-                  {fouls.red}
-                </span>{" "}
-                | Disarms:{" "}
-                <span className="bg-red-700 px-4 py-2 rounded-lg text-white text-3xl">
-                  {disarms.red}
-                </span>
+
+              {/* Updated Fouls and Disarms section */}
+              <div className="flex items-center justify-between w-full mt-2 px-2">
+                <div className="flex items-center">
+                  <button
+                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg text-base font-bold transition-all transform hover:scale-105 mr-2"
+                    onClick={() => handleFoul("red")}
+                  >
+                    Foul
+                  </button>
+                  <span className="text-lg md:text-xl text-red-200 font-bold">
+                    Fouls:{" "}
+                    <span className="bg-red-700 px-3 py-1 rounded-lg text-white text-xl md:text-2xl">
+                      {fouls.red}
+                    </span>
+                  </span>
+                </div>
+                <div className="flex items-center">
+                  <span className="text-lg md:text-xl text-red-200 font-bold">
+                    Disarms:{" "}
+                    <span className="bg-red-700 px-3 py-1 rounded-lg text-white text-xl md:text-2xl">
+                      {disarms.red}
+                    </span>
+                  </span>
+                  <button
+                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg text-base font-bold transition-all transform hover:scale-105 ml-2"
+                    onClick={() => handleDisarm("red")}
+                  >
+                    Disarm
+                  </button>
+                </div>
               </div>
             </div>
 
             {/* Blue Fighter */}
-            <div className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl shadow-2xl flex flex-col items-center justify-center p-2 md:p-4">
-              <label className="cursor-pointer mb-2 group">
+            <div className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl shadow-2xl flex flex-col items-center justify-center p-2 md:p-3">
+              <label className="cursor-pointer mb-1 group">
                 {teamLogos.blue ? (
                   <img
                     src={teamLogos.blue}
                     alt="Blue team logo"
-                    className="w-20 h-20 object-contain rounded-full bg-blue-700 p-2 mb-2 group-hover:opacity-80"
+                    className="w-12 h-12 md:w-16 md:h-16 object-contain rounded-full bg-blue-700 p-2 mb-1 group-hover:opacity-80"
                   />
                 ) : (
-                  <div className="w-20 h-20 rounded-full bg-blue-700 flex items-center justify-center mb-2 group-hover:bg-blue-600">
-                    <span className="text-blue-200">Add Logo</span>
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-blue-700 flex items-center justify-center mb-1 group-hover:bg-blue-600">
+                    <span className="text-blue-200 text-sm">Add Logo</span>
                   </div>
                 )}
                 <input
@@ -250,45 +258,53 @@ const Home = () => {
                 onChange={(e) =>
                   setTeamNames((prev) => ({ ...prev, blue: e.target.value }))
                 }
-                className="text-2xl font-bold text-center bg-transparent text-blue-200 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2"
+                className="text-xl md:text-2xl font-bold text-center bg-transparent text-blue-200 mb-1 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2"
               />
-              <div className="text-7xl font-bold mb-4 font-mono text-blue-100">
+              <div className="text-5xl md:text-6xl font-bold mb-2 font-mono text-blue-100">
                 {scores.blue}
               </div>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-3 gap-2">
                 {[1, 2, 5].map((points) => (
                   <button
                     key={points}
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg text-xl font-bold transition-all transform hover:scale-105"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-lg font-bold transition-all transform hover:scale-105"
                     onClick={() => handleScore("blue", points)}
                   >
                     +{points}
                   </button>
                 ))}
               </div>
-              <div className="mt-4">
-                <button
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-lg font-bold transition-all transform hover:scale-105"
-                  onClick={() => handleFoul("blue")}
-                >
-                  Foul
-                </button>
-                <button
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-lg font-bold transition-all transform hover:scale-105 ml-2"
-                  onClick={() => handleDisarm("blue")}
-                >
-                  Disarm
-                </button>
-              </div>
-              <div className="text-2xl mt-4 text-blue-200 font-bold">
-                Fouls:{" "}
-                <span className="bg-blue-700 px-4 py-2 rounded-lg text-white text-3xl">
-                  {fouls.blue}
-                </span>{" "}
-                | Disarms:{" "}
-                <span className="bg-blue-700 px-4 py-2 rounded-lg text-white text-3xl">
-                  {disarms.blue}
-                </span>
+
+              {/* Updated Fouls and Disarms section */}
+              <div className="flex items-center justify-between w-full mt-2 px-2">
+                <div className="flex items-center">
+                  <button
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-base font-bold transition-all transform hover:scale-105 mr-2"
+                    onClick={() => handleFoul("blue")}
+                  >
+                    Foul
+                  </button>
+                  <span className="text-lg md:text-xl text-blue-200 font-bold">
+                    Fouls:{" "}
+                    <span className="bg-blue-700 px-3 py-1 rounded-lg text-white text-xl md:text-2xl">
+                      {fouls.blue}
+                    </span>
+                  </span>
+                </div>
+                <div className="flex items-center">
+                  <span className="text-lg md:text-xl text-blue-200 font-bold">
+                    Disarms:{" "}
+                    <span className="bg-blue-700 px-3 py-1 rounded-lg text-white text-xl md:text-2xl">
+                      {disarms.blue}
+                    </span>
+                  </span>
+                  <button
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-base font-bold transition-all transform hover:scale-105 ml-2"
+                    onClick={() => handleDisarm("blue")}
+                  >
+                    Disarm
+                  </button>
+                </div>
               </div>
             </div>
           </div>

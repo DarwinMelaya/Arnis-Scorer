@@ -85,13 +85,13 @@ const Display = () => {
         </h1>
 
         {/* Main Content */}
-        <div className="flex-1 grid grid-rows-[1fr_1.2fr] gap-4">
+        <div className="flex-1 grid grid-rows-[0.8fr_1fr] gap-4">
           {/* Timer Section */}
           <div className="bg-gray-800 rounded-xl p-4 flex flex-col items-center justify-center shadow-2xl">
-            <div className="text-8xl font-mono font-bold text-green-500">
+            <div className="text-7xl font-mono font-bold text-green-500">
               {formatTime(time)}
             </div>
-            <div className="text-3xl mt-4 text-gray-300">
+            <div className="text-2xl mt-2 text-gray-300">
               Round <span className="text-yellow-500">{round}</span>
               <span className="text-gray-500">/3</span>
             </div>
@@ -100,54 +100,54 @@ const Display = () => {
           {/* Scoring Section */}
           <div className="grid grid-cols-2 gap-4">
             {/* Red Fighter */}
-            <div className="bg-gradient-to-br from-red-900 to-red-800 rounded-2xl shadow-2xl flex flex-col items-center justify-center p-4">
+            <div className="bg-gradient-to-br from-red-900 to-red-800 rounded-2xl shadow-2xl flex flex-col items-center justify-center p-3">
               {teamLogos.red && (
                 <img
                   src={teamLogos.red}
                   alt="Red team logo"
-                  className="w-20 h-20 object-contain rounded-full bg-red-700 p-2 mb-4"
+                  className="w-16 h-16 object-contain rounded-full bg-red-700 p-2 mb-2"
                 />
               )}
-              <h2 className="text-3xl font-bold text-red-200 mb-4">
+              <h2 className="text-2xl font-bold text-red-200 mb-2">
                 {teamNames.red}
               </h2>
-              <div className="text-9xl font-bold font-mono text-red-100">
+              <div className="text-8xl font-bold font-mono text-red-100">
                 {scores.red}
               </div>
-              <div className="text-3xl mt-6 text-red-200 font-bold">
+              <div className="text-2xl mt-4 text-red-200 font-bold">
                 Fouls:{" "}
-                <span className="bg-red-700 px-6 py-3 rounded-lg text-white text-4xl">
+                <span className="bg-red-700 px-4 py-2 rounded-lg text-white text-3xl">
                   {fouls.red}
                 </span>{" "}
                 | Disarms:{" "}
-                <span className="bg-red-700 px-6 py-3 rounded-lg text-white text-4xl">
+                <span className="bg-red-700 px-4 py-2 rounded-lg text-white text-3xl">
                   {disarms.red}
                 </span>
               </div>
             </div>
 
             {/* Blue Fighter */}
-            <div className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl shadow-2xl flex flex-col items-center justify-center p-4">
+            <div className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl shadow-2xl flex flex-col items-center justify-center p-3">
               {teamLogos.blue && (
                 <img
                   src={teamLogos.blue}
                   alt="Blue team logo"
-                  className="w-20 h-20 object-contain rounded-full bg-blue-700 p-2 mb-4"
+                  className="w-16 h-16 object-contain rounded-full bg-blue-700 p-2 mb-2"
                 />
               )}
-              <h2 className="text-3xl font-bold text-blue-200 mb-4">
+              <h2 className="text-2xl font-bold text-blue-200 mb-2">
                 {teamNames.blue}
               </h2>
-              <div className="text-9xl font-bold font-mono text-blue-100">
+              <div className="text-8xl font-bold font-mono text-blue-100">
                 {scores.blue}
               </div>
-              <div className="text-3xl mt-6 text-blue-200 font-bold">
+              <div className="text-2xl mt-4 text-blue-200 font-bold">
                 Fouls:{" "}
-                <span className="bg-blue-700 px-6 py-3 rounded-lg text-white text-4xl">
+                <span className="bg-blue-700 px-4 py-2 rounded-lg text-white text-3xl">
                   {fouls.blue}
                 </span>{" "}
                 | Disarms:{" "}
-                <span className="bg-blue-700 px-6 py-3 rounded-lg text-white text-4xl">
+                <span className="bg-blue-700 px-4 py-2 rounded-lg text-white text-3xl">
                   {disarms.blue}
                 </span>
               </div>
