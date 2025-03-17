@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Display, Home } from "./pages";
+import { Arnis, ArnisScorer } from "./pages";
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/display" element={<Display/>} />
+        <Route path="/arnis" element={<Arnis />} />
+        <Route path="/arnis-scorer" element={<ArnisScorer />} />
       </Routes>
     </Router>
   );

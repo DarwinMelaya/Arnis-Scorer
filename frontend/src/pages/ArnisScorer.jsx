@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Display = () => {
+const ArnisScorer = () => {
   const [time, setTime] = useState(120);
   const [round, setRound] = useState(1);
   const [scores, setScores] = useState({
@@ -159,4 +159,4 @@ const Display = () => {
   );
 };
 
-export default Display;
+export default ArnisScorer;

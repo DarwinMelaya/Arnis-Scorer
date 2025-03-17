@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Home = () => {
+const Arnis = () => {
   const [time, setTime] = useState(120); // 2 minutes per round
   const [isRunning, setIsRunning] = useState(false);
   const [round, setRound] = useState(1);
@@ -314,4 +314,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Arnis;

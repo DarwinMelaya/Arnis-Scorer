@@ -1,2 +1,2 @@
-export { default as Home } from "./Home";
-export { default as Display } from "./Display";
+export { default as Arnis } from "./Arnis";
+export { default as ArnisScorer } from "./ArnisScorer";
