@@ -1,2 +1,2 @@
-export { default as Arnis } from "./Arnis";
-export { default as ArnisScorer } from "./ArnisScorer";
+export { default as Arnis } from "./Arnis/Arnis";
+export { default as ArnisScorer } from "./Arnis/ArnisScorer";
