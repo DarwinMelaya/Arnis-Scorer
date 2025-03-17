@@ -7,6 +7,8 @@ const Billiard = () => {
   const [scores, setScores] = useState({
     player1: 0,
     player2: 0,
+    fouls1: 0,
+    fouls2: 0,
   });
   const [playerNames, setPlayerNames] = useState({
     player1: "PLAYER 1",
@@ -48,6 +50,14 @@ const Billiard = () => {
     }));
   };
 
+  const handleFoul = (player, increment = true) => {
+    const foulKey = player === "player1" ? "fouls1" : "fouls2";
+    setScores((prev) => ({
+      ...prev,
+      [foulKey]: Math.max(0, prev[foulKey] + (increment ? 1 : -1)),
+    }));
+  };
+
   const resetRack = () => {
     setRack((prev) => prev + 1);
     setTime(60);
@@ -58,7 +68,7 @@ const Billiard = () => {
     setTime(60);
     setIsRunning(false);
     setRack(1);
-    setScores({ player1: 0, player2: 0 });
+    setScores({ player1: 0, player2: 0, fouls1: 0, fouls2: 0 });
   };
 
   const handleExtension = () => {
@@ -160,7 +170,8 @@ const Billiard = () => {
             <div className="text-5xl md:text-6xl font-bold mb-4 font-mono text-blue-100 text-center">
               {scores.player1}
             </div>
-            <div className="grid grid-cols-3 gap-2">
+            {/* Scoring Buttons */}
+            <div className="grid grid-cols-3 gap-2 mb-4">
               {[1, 2, 3].map((points) => (
                 <button
                   key={points}
@@ -170,6 +181,28 @@ const Billiard = () => {
                   +{points}
                 </button>
               ))}
+            </div>
+            {/* Foul Section */}
+            <div className="border-t border-blue-700 pt-4">
+              <div className="flex justify-between items-center gap-2">
+                <span className="text-blue-200 font-bold">
+                  Fouls: {scores.fouls1}
+                </span>
+                <div className="flex gap-2">
+                  <button
+                    className="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded-lg text-lg font-bold transition-all transform hover:scale-105"
+                    onClick={() => handleFoul("player1", true)}
+                  >
+                    +F
+                  </button>
+                  <button
+                    className="bg-yellow-800 hover:bg-yellow-900 text-white px-4 py-2 rounded-lg text-lg font-bold transition-all transform hover:scale-105"
+                    onClick={() => handleFoul("player1", false)}
+                  >
+                    -F
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -186,7 +219,8 @@ const Billiard = () => {
             <div className="text-5xl md:text-6xl font-bold mb-4 font-mono text-red-100 text-center">
               {scores.player2}
             </div>
-            <div className="grid grid-cols-3 gap-2">
+            {/* Scoring Buttons */}
+            <div className="grid grid-cols-3 gap-2 mb-4">
               {[1, 2, 3].map((points) => (
                 <button
                   key={points}
@@ -196,6 +230,28 @@ const Billiard = () => {
                   +{points}
                 </button>
               ))}
+            </div>
+            {/* Foul Section */}
+            <div className="border-t border-red-700 pt-4">
+              <div className="flex justify-between items-center gap-2">
+                <span className="text-red-200 font-bold">
+                  Fouls: {scores.fouls2}
+                </span>
+                <div className="flex gap-2">
+                  <button
+                    className="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded-lg text-lg font-bold transition-all transform hover:scale-105"
+                    onClick={() => handleFoul("player2", true)}
+                  >
+                    +F
+                  </button>
+                  <button
+                    className="bg-yellow-800 hover:bg-yellow-900 text-white px-4 py-2 rounded-lg text-lg font-bold transition-all transform hover:scale-105"
+                    onClick={() => handleFoul("player2", false)}
+                  >
+                    -F
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

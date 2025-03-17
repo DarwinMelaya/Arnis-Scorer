@@ -6,6 +6,8 @@ const BilliardScorer = () => {
   const [scores, setScores] = useState({
     player1: 0,
     player2: 0,
+    fouls1: 0,
+    fouls2: 0,
   });
   const [playerNames, setPlayerNames] = useState({
     player1: "PLAYER 1",
@@ -20,7 +22,9 @@ const BilliardScorer = () => {
         const parsedState = JSON.parse(gameState);
         setTime(parsedState.time || 60);
         setRack(parsedState.rack || 1);
-        setScores(parsedState.scores || { player1: 0, player2: 0 });
+        setScores(
+          parsedState.scores || { player1: 0, player2: 0, fouls1: 0, fouls2: 0 }
+        );
         setPlayerNames(
           parsedState.playerNames || {
             player1: "PLAYER 1",
@@ -94,6 +98,9 @@ const BilliardScorer = () => {
               <div className="text-8xl font-bold font-mono text-blue-100">
                 {scores.player1}
               </div>
+              <div className="text-xl font-bold text-yellow-400 mt-2">
+                Fouls: {scores.fouls1}
+              </div>
             </div>
 
             {/* Player 2 */}
@@ -103,6 +110,9 @@ const BilliardScorer = () => {
               </h2>
               <div className="text-8xl font-bold font-mono text-red-100">
                 {scores.player2}
+              </div>
+              <div className="text-xl font-bold text-yellow-400 mt-2">
+                Fouls: {scores.fouls2}
               </div>
             </div>
           </div>
