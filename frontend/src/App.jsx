@@ -1,5 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { Arnis, ArnisScorer, Billiard, Main } from "./pages";
+import { Arnis, ArnisScorer, Billiard, BilliardScorer, Main } from "./pages";
 
 const App = () => {
   return (
@@ -11,6 +11,7 @@ const App = () => {
         <Route path="/arnis-scorer" element={<ArnisScorer />} />
         {/* Billiard */}
         <Route path="/billiard" element={<Billiard />} />
+        <Route path="/billiard-scorer" element={<BilliardScorer />} />
       </Routes>
     </Router>
   );

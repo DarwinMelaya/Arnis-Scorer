@@ -25,6 +25,18 @@ const Billiard = () => {
     return () => clearInterval(interval);
   }, [isRunning, time]);
 
+  useEffect(() => {
+    localStorage.setItem(
+      "billiardGameState",
+      JSON.stringify({
+        time,
+        rack,
+        scores,
+        playerNames,
+      })
+    );
+  }, [time, rack, scores, playerNames]);
+
   const formatTime = (seconds) => {
     return seconds.toString().padStart(2, "0");
   };
@@ -80,6 +92,12 @@ const Billiard = () => {
           >
             RACK {rack}
           </h1>
+          <button
+            onClick={() => window.open("/billiard-scorer", "_blank")}
+            className="ml-4 bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg text-lg font-bold transition-all transform hover:scale-105"
+          >
+            Scorer View
+          </button>
         </div>
 
         {/* Timer Section */}
