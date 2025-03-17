@@ -5,7 +5,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/main" element={<Main />} />
+        <Route path="/" element={<Main />} />
         {/* Arnis */}
         <Route path="/arnis" element={<Arnis />} />
         <Route path="/arnis-scorer" element={<ArnisScorer />} />
