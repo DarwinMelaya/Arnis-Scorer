@@ -85,7 +85,7 @@ const Billiard = () => {
       <div className="container mx-auto flex-1 flex flex-col p-2 md:p-4">
         {/* Header */}
         <div className="flex justify-between items-center mb-2 md:mb-4">
-          <h1
+          <div
             className="text-3xl md:text-5xl font-extrabold tracking-widest text-center flex-1"
             style={{
               color: "#ffffff",
@@ -100,8 +100,18 @@ const Billiard = () => {
               border: "2px solid rgba(255, 255, 255, 0.1)",
             }}
           >
-            RACK {rack}
-          </h1>
+            RACK{" "}
+            <input
+              type="number"
+              value={rack}
+              onChange={(e) => {
+                const value = parseInt(e.target.value) || 1;
+                setRack(Math.max(1, value));
+              }}
+              className="w-16 bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-green-500 rounded text-center"
+              min="1"
+            />
+          </div>
           <button
             onClick={() => window.open("/billiard-scorer", "_blank")}
             className="ml-4 bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg text-lg font-bold transition-all transform hover:scale-105"
@@ -111,46 +121,71 @@ const Billiard = () => {
         </div>
 
         {/* Timer Section */}
-        <div className="bg-gray-800 rounded-xl p-2 md:p-4 flex flex-col items-center justify-center shadow-2xl mb-4">
-          <div className="text-5xl md:text-7xl font-mono font-bold text-green-500">
-            {formatTime(time)}
+        <div className="bg-gray-800 rounded-xl p-2 md:p-4 flex flex-col items-center justify-center shadow-2xl mb-4 max-w-lg mx-auto w-full">
+          {/* Timer Display */}
+          <div className="flex items-center justify-center">
+            <input
+              type="number"
+              value={time}
+              onChange={(e) => {
+                const value = parseInt(e.target.value) || 0;
+                setTime(Math.max(0, value));
+                setIsRunning(false);
+              }}
+              className="text-4xl md:text-6xl font-mono font-bold text-green-500 mb-2 w-32 bg-transparent focus:outline-none focus:ring-2 focus:ring-green-500 rounded text-center"
+              min="0"
+            />
           </div>
-          <div className="grid grid-cols-2 gap-2 w-full max-w-md mt-2">
+
+          {/* Time Set Buttons */}
+          <div className="grid grid-cols-2 gap-2 w-full mt-1">
             <button
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-lg font-bold"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg text-base font-bold"
               onClick={() => handleSetTime(30)}
             >
               Set 30s
             </button>
             <button
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-lg font-bold"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg text-base font-bold"
               onClick={() => handleSetTime(60)}
             >
               Set 60s
             </button>
           </div>
-          <div className="space-x-2 md:space-x-4 mt-2 md:mt-4">
+
+          {/* Control Buttons */}
+          <div className="flex gap-2 mt-2 w-full justify-center">
             <button
               className={`${
                 isRunning
                   ? "bg-red-600 hover:bg-red-700"
                   : "bg-green-600 hover:bg-green-700"
-              } text-white px-6 py-2 rounded-lg text-lg font-bold transition-all transform hover:scale-105`}
+              } text-white px-4 py-1.5 rounded-lg text-base font-bold transition-all transform hover:scale-105 flex-1`}
               onClick={() => setIsRunning(!isRunning)}
             >
               {isRunning ? "PAUSE" : "START"}
             </button>
             <button
-              className="bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-2 rounded-lg text-lg font-bold transition-all transform hover:scale-105"
+              className="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-1.5 rounded-lg text-base font-bold transition-all transform hover:scale-105 flex-1"
               onClick={handleExtension}
             >
               +30s
             </button>
             <button
-              className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg text-lg font-bold transition-all transform hover:scale-105"
+              className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-1.5 rounded-lg text-base font-bold transition-all transform hover:scale-105 flex-1"
               onClick={resetRack}
             >
               NEXT RACK
+            </button>
+          </div>
+
+          {/* Reset Game Button */}
+          <div className="mt-2 w-full">
+            <button
+              className="w-full bg-gray-600 hover:bg-gray-700 text-white px-4 py-1.5 rounded-lg text-base font-bold transition-all transform hover:scale-105"
+              onClick={resetGame}
+            >
+              Reset Game
             </button>
           </div>
         </div>
@@ -167,9 +202,15 @@ const Billiard = () => {
               }
               className="text-xl md:text-2xl font-bold text-center bg-transparent text-blue-200 mb-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2"
             />
-            <div className="text-5xl md:text-6xl font-bold mb-4 font-mono text-blue-100 text-center">
-              {scores.player1}
-            </div>
+            <input
+              type="number"
+              value={scores.player1}
+              onChange={(e) => {
+                const value = parseInt(e.target.value) || 0;
+                setScores((prev) => ({ ...prev, player1: Math.max(0, value) }));
+              }}
+              className="text-5xl md:text-6xl font-bold mb-4 font-mono text-blue-100 text-center bg-transparent w-full focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2"
+            />
             {/* Scoring Buttons */}
             <div className="grid grid-cols-3 gap-2 mb-4">
               {[1, 2, 3].map((points) => (
@@ -186,7 +227,19 @@ const Billiard = () => {
             <div className="border-t border-blue-700 pt-4">
               <div className="flex justify-between items-center gap-2">
                 <span className="text-blue-200 font-bold">
-                  Fouls: {scores.fouls1}
+                  Fouls:
+                  <input
+                    type="number"
+                    value={scores.fouls1}
+                    onChange={(e) => {
+                      const value = parseInt(e.target.value) || 0;
+                      setScores((prev) => ({
+                        ...prev,
+                        fouls1: Math.max(0, value),
+                      }));
+                    }}
+                    className="w-12 ml-2 bg-transparent text-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-1"
+                  />
                 </span>
                 <div className="flex gap-2">
                   <button
@@ -216,9 +269,15 @@ const Billiard = () => {
               }
               className="text-xl md:text-2xl font-bold text-center bg-transparent text-red-200 mb-2 w-full focus:outline-none focus:ring-2 focus:ring-red-500 rounded px-2"
             />
-            <div className="text-5xl md:text-6xl font-bold mb-4 font-mono text-red-100 text-center">
-              {scores.player2}
-            </div>
+            <input
+              type="number"
+              value={scores.player2}
+              onChange={(e) => {
+                const value = parseInt(e.target.value) || 0;
+                setScores((prev) => ({ ...prev, player2: Math.max(0, value) }));
+              }}
+              className="text-5xl md:text-6xl font-bold mb-4 font-mono text-red-100 text-center bg-transparent w-full focus:outline-none focus:ring-2 focus:ring-red-500 rounded px-2"
+            />
             {/* Scoring Buttons */}
             <div className="grid grid-cols-3 gap-2 mb-4">
               {[1, 2, 3].map((points) => (
@@ -235,7 +294,19 @@ const Billiard = () => {
             <div className="border-t border-red-700 pt-4">
               <div className="flex justify-between items-center gap-2">
                 <span className="text-red-200 font-bold">
-                  Fouls: {scores.fouls2}
+                  Fouls:
+                  <input
+                    type="number"
+                    value={scores.fouls2}
+                    onChange={(e) => {
+                      const value = parseInt(e.target.value) || 0;
+                      setScores((prev) => ({
+                        ...prev,
+                        fouls2: Math.max(0, value),
+                      }));
+                    }}
+                    className="w-12 ml-2 bg-transparent text-red-100 focus:outline-none focus:ring-2 focus:ring-red-500 rounded px-1"
+                  />
                 </span>
                 <div className="flex gap-2">
                   <button
@@ -254,16 +325,6 @@ const Billiard = () => {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Reset Game Button */}
-        <div className="mt-4 text-center">
-          <button
-            className="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg text-lg font-bold transition-all transform hover:scale-105"
-            onClick={resetGame}
-          >
-            Reset Game
-          </button>
         </div>
       </div>
     </div>
