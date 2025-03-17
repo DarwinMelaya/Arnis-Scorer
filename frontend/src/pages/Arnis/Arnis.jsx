@@ -102,24 +102,32 @@ const Arnis = () => {
     <div className="h-screen bg-white text-white flex flex-col overflow-hidden">
       <div className="container mx-auto flex-1 flex flex-col p-2 md:p-4">
         {/* Header */}
-        <h1
-          className="text-3xl md:text-5xl font-extrabold tracking-widest text-center mb-2 md:mb-4"
-          style={{
-            color: "#ffffff",
-            background:
-              "linear-gradient(135deg, #660033 0%, #990033 50%, #cc0033 100%)",
-            padding: "10px md:20px",
-            borderRadius: "12px",
-            boxShadow:
-              "0 4px 20px rgba(102, 0, 51, 0.4), 0 8px 32px rgba(0, 0, 0, 0.3)",
-            textTransform: "uppercase",
-            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
-            border: "2px solid rgba(255, 255, 255, 0.1)",
-            backdropFilter: "blur(10px)",
-          }}
-        >
-          STRASUC 2025
-        </h1>
+        <div className="flex justify-between items-center mb-2 md:mb-4">
+          <h1
+            className="text-3xl md:text-5xl font-extrabold tracking-widest text-center flex-1"
+            style={{
+              color: "#ffffff",
+              background:
+                "linear-gradient(135deg, #660033 0%, #990033 50%, #cc0033 100%)",
+              padding: "10px md:20px",
+              borderRadius: "12px",
+              boxShadow:
+                "0 4px 20px rgba(102, 0, 51, 0.4), 0 8px 32px rgba(0, 0, 0, 0.3)",
+              textTransform: "uppercase",
+              textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
+              border: "2px solid rgba(255, 255, 255, 0.1)",
+              backdropFilter: "blur(10px)",
+            }}
+          >
+            STRASUC 2025
+          </h1>
+          <button
+            onClick={() => window.open("/arnis-scorer", "_blank")}
+            className="ml-4 bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg text-lg font-bold transition-all transform hover:scale-105"
+          >
+            Scorer View
+          </button>
+        </div>
 
         {/* Main Content */}
         <div className="flex-1 grid grid-rows-[auto_1fr] gap-2 md:gap-4">
